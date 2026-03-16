@@ -1,0 +1,133 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.grid-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  flex-shrink: 0;
+  background: var(--tlk-bg);
+  border-bottom: 1px solid var(--tlk-border);
+  font-family: var(--tlk-font);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.grid-header-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tlk-text);
+  white-space: nowrap;
+  margin-right: 8px;
+  transition: color 0.3s ease;
+}
+
+.grid-header-zones {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.zone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  &.zone-left {
+    justify-content: flex-start;
+  }
+
+  &.zone-center {
+    flex: 1;
+    justify-content: center;
+  }
+
+  &.zone-right {
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+}
+
+.toggle-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--tlk-text);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+
+  input[type='checkbox'] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--tlk-accent);
+    cursor: pointer;
+  }
+}
+
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border: 1px solid var(--tlk-btn-border);
+  border-radius: 6px;
+  background: var(--tlk-btn-bg);
+  color: var(--tlk-btn-text);
+  font-family: var(--tlk-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--tlk-btn-hover-bg);
+    border-color: var(--tlk-btn-hover-border);
+  }
+}
+
+.header-dropdown {
+  padding: 6px 12px;
+  border: 1px solid var(--tlk-input-border);
+  border-radius: 6px;
+  background: var(--tlk-input-bg);
+  color: var(--tlk-input-text);
+  font-family: var(--tlk-font);
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:focus {
+    border-color: var(--tlk-input-border-focus);
+  }
+}
+
+.header-search {
+  padding: 6px 12px;
+  border: 1px solid var(--tlk-input-border);
+  border-radius: 6px;
+  background: var(--tlk-input-bg);
+  color: var(--tlk-input-text);
+  font-family: var(--tlk-font);
+  font-size: 13px;
+  outline: none;
+  min-width: 180px;
+  transition: all 0.2s ease;
+
+  &::placeholder {
+    color: var(--tlk-placeholder);
+  }
+
+  &:focus {
+    border-color: var(--tlk-input-border-focus);
+    box-shadow: 0 0 0 2px var(--tlk-input-focus-shadow);
+  }
+}

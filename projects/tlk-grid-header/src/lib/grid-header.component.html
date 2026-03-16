@@ -1,0 +1,81 @@
+<div class="grid-header" [style.height]="height" [ngStyle]="themeVars">
+  @if (title) {
+  <span class="grid-header-title">{{ title }}</span>
+  }
+
+  <div class="grid-header-zones">
+    <div class="zone zone-left">
+      @for (toggle of getItemsByAlign(toggleFilters, 'left'); track toggle.id) {
+      <tlk-slide-toggle class="toggle-filter" [checked]="!!toggleStates[toggle.id]"
+        (changeEvent)="onToggleChange(toggle)" [labelPosition]="'right'">
+        {{ toggle.title }}
+      </tlk-slide-toggle>
+      }
+      @for (dd of getItemsByAlign(customDropdownFilter, 'left'); track dd.id) {
+      <select class="header-dropdown" [ngModel]="dropdownValues[dd.id]"
+        (ngModelChange)="dropdownValues[dd.id] = $event; onDropdownChange(dd)">
+        <option value="" disabled selected>{{ dd.field }}</option>
+        @for (opt of dd.options; track opt.value) {
+        <option [ngValue]="opt.value">{{ opt.label }}</option>
+        }
+      </select>
+      }
+      @if (hasSearchBar('left') && searchBar) {
+      <input class="header-search" type="text" [placeholder]="searchBar.placeholder" (input)="onSearchInput($event)" />
+      }
+      @for (btn of getItemsByAlign(customButtons, 'left'); track btn.id) {
+      <button class="header-btn" (click)="onButtonClick(btn)">{{ btn.title }}</button>
+      }
+    </div>
+
+    <div class="zone zone-center">
+      @for (toggle of getItemsByAlign(toggleFilters, 'center'); track toggle.id) {
+      <tlk-slide-toggle class="toggle-filter" [checked]="!!toggleStates[toggle.id]"
+        (changeEvent)="onToggleChange(toggle)" [labelPosition]="'right'">
+        {{ toggle.title }}
+      </tlk-slide-toggle>
+      }
+      @for (dd of getItemsByAlign(customDropdownFilter, 'center'); track dd.id) {
+      <select class="header-dropdown" [ngModel]="dropdownValues[dd.id]"
+        (ngModelChange)="dropdownValues[dd.id] = $event; onDropdownChange(dd)">
+        <option value="" disabled selected>{{ dd.field }}</option>
+        @for (opt of dd.options; track opt.value) {
+        <option [ngValue]="opt.value">{{ opt.label }}</option>
+        }
+      </select>
+      }
+      @if (hasSearchBar('center') && searchBar) {
+      <input class="header-search" type="text" [placeholder]="searchBar.placeholder" (input)="onSearchInput($event)" />
+      }
+      @for (btn of getItemsByAlign(customButtons, 'center'); track btn.id) {
+      <button class="header-btn" (click)="onButtonClick(btn)">{{ btn.title }}</button>
+      }
+    </div>
+
+    <div class="zone zone-right">
+      @for (toggle of getItemsByAlign(toggleFilters, 'right'); track toggle.id) {
+      <tlk-slide-toggle class="toggle-filter" [checked]="!!toggleStates[toggle.id]"
+        (changeEvent)="onToggleChange(toggle)">
+        {{ toggle.title }}
+      </tlk-slide-toggle>
+      }
+      @for (dd of getItemsByAlign(customDropdownFilter, 'right'); track dd.id) {
+      <select class="header-dropdown" [ngModel]="dropdownValues[dd.id]"
+        (ngModelChange)="dropdownValues[dd.id] = $event; onDropdownChange(dd)">
+        <option value="" disabled selected>{{ dd.field }}</option>
+        @for (opt of dd.options; track opt.value) {
+        <option [ngValue]="opt.value">{{ opt.label }}</option>
+        }
+      </select>
+      }
+      @if (hasSearchBar('right') && searchBar) {
+      <input class="header-search" type="text" [placeholder]="searchBar.placeholder" (input)="onSearchInput($event)" />
+      }
+      @for (btn of getItemsByAlign(customButtons, 'right'); track btn.id) {
+      <button tlkButton [variant]="'primary'" [size]="'s'" [disabled]="false">
+        {{ btn.title }}
+      </button>
+      }
+    </div>
+  </div>
+</div>

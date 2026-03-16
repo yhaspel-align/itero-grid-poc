@@ -1,0 +1,24 @@
+<div class="expand-cell">
+  <button
+    class="chevron-btn"
+    [class.expanded]="isExpanded"
+    (click)="toggle($event)"
+    title="Expand row"
+  >
+    <svg width="12" height="12" viewBox="0 0 12 12">
+      <path d="M4 2 L8 6 L4 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+@if (isExpanded) {
+  <div class="detail-panel" [style.padding-left.px]="detailPanelOffsetLeft">
+    @for (btn of visibleActions; track btn.id) {
+      <button tlkButton variant="secondary" size="s" (click)="onAction($event, btn)">
+        {{ btn.label }}
+      </button>
+    }
+    @if (visibleActions.length === 0) {
+      <span class="no-actions">No actions available</span>
+    }
+  </div>
+}

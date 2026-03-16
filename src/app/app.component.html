@@ -1,0 +1,59 @@
+<div class="app-container" [class.dark]="isDarkTheme">
+  <div class="control-header">
+    <span class="control-header-label">Control Header</span>
+    <div class="controls">
+      <div class="features-dropdown">
+        <button class="control-btn" (click)="toggleFeaturesPanel()">
+          Grid Features
+          <span class="arrow" [class.open]="showFeaturesPanel"></span>
+        </button>
+        @if (showFeaturesPanel) {
+          <div class="features-panel">
+            @for (feature of gridFeatures; track feature.key) {
+              <label class="feature-item" (click)="$event.stopPropagation()">
+                <input
+                  type="checkbox"
+                  [checked]="feature.enabled"
+                  (change)="onFeatureToggle(feature)"
+                />
+                <span class="feature-label">{{ feature.label }}</span>
+              </label>
+            }
+          </div>
+        }
+      </div>
+      <button class="control-btn" (click)="toggleTheme()">
+        {{ isDarkTheme ? 'Light Theme' : 'Dark Theme' }}
+      </button>
+    </div>
+  </div>
+  <header class="app-title-bar">
+    <h1>iTero Grid</h1>
+  </header>
+  <tlk-grid-header
+    [title]="'Orders'"
+    [theme]="gridHeaderTheme"
+    [toggleFilters]="headerToggleFilters"
+    [searchBar]="headerSearchBar"
+    [customButtons]="headerCustomButtons"
+    [customDropdownFilter]="headerDropdownFilters"
+    (action)="onGridHeaderAction($event)"
+  />
+  <ag-grid-angular
+    class="grid"
+    [rowModelType]="rowModelType"
+    [datasource]="datasource"
+    [cacheBlockSize]="cacheBlockSize"
+    [maxBlocksInCache]="maxBlocksInCache"
+    [columnDefs]="colDefs"
+    [defaultColDef]="defaultColDef"
+    [theme]="currentTheme"
+    [columnHoverHighlight]="columnHoverHighlight"
+    [animateRows]="animateRows"
+    [rowSelection]="rowSelection"
+    [enableCellTextSelection]="enableCellTextSelection"
+    [suppressMovableColumns]="suppressMovableColumns"
+    [getRowHeight]="getRowHeight"
+    (gridReady)="onGridReady($event)"
+  />
+</div>
