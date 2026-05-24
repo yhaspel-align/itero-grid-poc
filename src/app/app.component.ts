@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { TlkButtonComponent } from '@itero/ui-components-angular/button';
-import { TlkCheckboxComponent } from '@itero/ui-components-angular/checkbox';
+import { IuiButtonComponent } from '@itero/ui-components-angular/button';
+import { IuiCheckboxComponent } from '@itero/ui-components-angular/checkbox';
 import { ColDef, Theme, IDatasource, IGetRowsParams, type RowSelectionOptions, type RowHeightParams } from 'ag-grid-community';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -17,10 +17,7 @@ import {
   CustomButtonConfig,
   CustomDropdownFilterConfig,
   GridHeaderAction,
-  GridHeaderTheme,
-  GRID_HEADER_LIGHT_THEME,
-  GRID_HEADER_DARK_THEME,
-} from 'tlk-grid-header';
+} from 'iui-grid-header';
 
 function formatDate(params: { value: string | null }): string {
   if (!params.value) return '';
@@ -43,7 +40,7 @@ export interface GridFeature {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [AgGridAngular, GridHeaderComponent, TlkButtonComponent, TlkCheckboxComponent],
+  imports: [AgGridAngular, GridHeaderComponent, IuiButtonComponent, IuiCheckboxComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -52,7 +49,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   isDarkTheme = false;
   currentTheme: Theme = lightTheme;
-  gridHeaderTheme: GridHeaderTheme = GRID_HEADER_LIGHT_THEME;
   showFeaturesPanel = false;
 
   /** Infinite row model configuration */
@@ -303,7 +299,6 @@ export class AppComponent implements OnInit, OnDestroy {
   toggleTheme(): void {
     this.isDarkTheme = !this.isDarkTheme;
     this.currentTheme = this.isDarkTheme ? darkTheme : lightTheme;
-    this.gridHeaderTheme = this.isDarkTheme ? GRID_HEADER_DARK_THEME : GRID_HEADER_LIGHT_THEME;
   }
 
   toggleFeaturesPanel(): void {

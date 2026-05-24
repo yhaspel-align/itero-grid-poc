@@ -34,22 +34,3 @@ export interface GridHeaderAction {
   type: 'toggle' | 'search' | 'button' | 'dropdown';
   value: any;
 }
-
-export interface GridHeaderTheme {
-  backgroundColor: string;
-  textColor: string;
-  borderColor: string;
-  fontFamily: string;
-  inputBackground: string;
-  inputTextColor: string;
-  inputBorderColor: string;
-  inputBorderFocusColor: string;
-  inputFocusShadow: string;
-  placeholderColor: string;
-  buttonBackground: string;
-  buttonTextColor: string;
-  buttonBorderColor: string;
-  buttonHoverBackground: string;
-  buttonHoverBorderColor: string;
-  accentColor: string;
-}

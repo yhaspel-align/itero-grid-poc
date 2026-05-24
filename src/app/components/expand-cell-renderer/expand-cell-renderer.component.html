@@ -13,7 +13,7 @@
 @if (isExpanded) {
   <div class="detail-panel" [style.padding-left.px]="detailPanelOffsetLeft">
     @for (btn of visibleActions; track btn.id) {
-      <button tlkButton variant="secondary" size="s" (click)="onAction($event, btn)">
+      <button iuiButton emphasis="secondary" size="s" (click)="onAction($event, btn)">
         {{ btn.label }}
       </button>
     }

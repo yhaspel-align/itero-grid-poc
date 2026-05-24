@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { TlkButtonComponent } from '@itero/ui-components-angular/button';
+import { IuiButtonComponent } from '@itero/ui-components-angular/button';
 
 export interface RowAction {
   id: string;
@@ -65,7 +65,7 @@ export interface ExpandCellRendererParams extends ICellRendererParams {
 @Component({
   selector: 'app-expand-cell',
   standalone: true,
-  imports: [TlkButtonComponent],
+  imports: [IuiButtonComponent],
   templateUrl: './expand-cell-renderer.component.html',
   styleUrl: './expand-cell-renderer.component.scss',
 })

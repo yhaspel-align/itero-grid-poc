@@ -18,8 +18,8 @@
     "target": "ES2022",
     "module": "ES2022",
     "paths": {
-      "tlk-grid-header": [
-        "./projects/tlk-grid-header/src/public-api.ts"
+      "iui-grid-header": [
+        "./dist/iui-grid-header"
       ]
     }
   },

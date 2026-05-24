@@ -1,32 +1,28 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TlkSlideToggleComponent } from '@itero/ui-components-angular/slide-toggle';
-import { TlkButtonComponent } from '@itero/ui-components-angular/button';
-import { TlkSelectComponent } from '@itero/ui-components-angular/select';
-import { TlkTextInputComponent } from '@itero/ui-components-angular/text-input';
+import { IuiSlideToggleComponent } from '@itero/ui-components-angular/slide-toggle';
+import { IuiButtonComponent } from '@itero/ui-components-angular/button';
+import { IuiSelectComponent } from '@itero/ui-components-angular/select';
+import { IuiTextInputComponent } from '@itero/ui-components-angular/text-input';
 import {
   GridHeaderAlign,
-  GridHeaderTheme,
   ToggleFilterConfig,
   SearchBarConfig,
   CustomButtonConfig,
   CustomDropdownFilterConfig,
   GridHeaderAction,
 } from './grid-header.models';
-import { GRID_HEADER_LIGHT_THEME } from './grid-header-themes';
 
 @Component({
-  selector: 'tlk-grid-header',
+  selector: 'iui-grid-header',
   standalone: true,
-  imports: [NgStyle, FormsModule, TlkSlideToggleComponent, TlkButtonComponent, TlkSelectComponent, TlkTextInputComponent],
+  imports: [FormsModule, IuiSlideToggleComponent, IuiButtonComponent, IuiSelectComponent, IuiTextInputComponent],
   templateUrl: './grid-header.component.html',
   styleUrl: './grid-header.component.scss',
 })
 export class GridHeaderComponent {
   @Input() title = '';
   @Input() height = '60px';
-  @Input() theme: GridHeaderTheme = GRID_HEADER_LIGHT_THEME;
   @Input() toggleFilters: ToggleFilterConfig[] = [];
   @Input() searchBar: SearchBarConfig | null = null;
   @Input() customButtons: CustomButtonConfig[] = [];
@@ -40,28 +36,6 @@ export class GridHeaderComponent {
 
   getDropdownOptionLabel = (opt: { label: string; value: any } | null | undefined): string =>
     opt?.label ?? '';
-
-  get themeVars(): Record<string, string> {
-    const t = this.theme;
-    return {
-      '--tlk-bg': t.backgroundColor,
-      '--tlk-text': t.textColor,
-      '--tlk-border': t.borderColor,
-      '--tlk-font': t.fontFamily,
-      '--tlk-input-bg': t.inputBackground,
-      '--tlk-input-text': t.inputTextColor,
-      '--tlk-input-border': t.inputBorderColor,
-      '--tlk-input-border-focus': t.inputBorderFocusColor,
-      '--tlk-input-focus-shadow': t.inputFocusShadow,
-      '--tlk-placeholder': t.placeholderColor,
-      '--tlk-btn-bg': t.buttonBackground,
-      '--tlk-btn-text': t.buttonTextColor,
-      '--tlk-btn-border': t.buttonBorderColor,
-      '--tlk-btn-hover-bg': t.buttonHoverBackground,
-      '--tlk-btn-hover-border': t.buttonHoverBorderColor,
-      '--tlk-accent': t.accentColor,
-    };
-  }
 
   getItemsByAlign<T extends { align: GridHeaderAlign }>(items: T[], align: GridHeaderAlign): T[] {
     return items.filter((item) => item.align === align);

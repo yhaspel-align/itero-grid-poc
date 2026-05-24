@@ -1,9 +1,9 @@
-<div class="app-container" [class.dark]="isDarkTheme" [class.tlk-theme_dark]="isDarkTheme">
+<div class="app-container" [class.dark]="isDarkTheme" [class.iui-theme_dark]="isDarkTheme">
   <div class="control-header">
     <span class="control-header-label">Control Header</span>
     <div class="controls">
       <div class="features-dropdown">
-        <button tlkButton [variant]="'secondary'" [size]="'s'" (click)="toggleFeaturesPanel()">
+        <button iuiButton [emphasis]="'secondary'" [size]="'s'" (click)="toggleFeaturesPanel()">
           Grid Features
           <span class="arrow" [class.open]="showFeaturesPanel"></span>
         </button>
@@ -11,17 +11,17 @@
           <div class="features-panel">
             @for (feature of gridFeatures; track feature.key) {
               <div class="feature-item" (click)="$event.stopPropagation()">
-                <tlk-checkbox
+                <iui-checkbox
                   [checked]="feature.enabled"
                   (changeEvent)="onFeatureToggle(feature)">
                   {{ feature.label }}
-                </tlk-checkbox>
+                </iui-checkbox>
               </div>
             }
           </div>
         }
       </div>
-      <button tlkButton [variant]="'secondary'" [size]="'s'" (click)="toggleTheme()">
+      <button iuiButton [emphasis]="'secondary'" [size]="'s'" (click)="toggleTheme()">
         {{ isDarkTheme ? 'Light Theme' : 'Dark Theme' }}
       </button>
     </div>
@@ -29,9 +29,8 @@
   <header class="app-title-bar">
     <h1>iTero Grid</h1>
   </header>
-  <tlk-grid-header
+  <iui-grid-header
     [title]="'Orders'"
-    [theme]="gridHeaderTheme"
     [toggleFilters]="headerToggleFilters"
     [searchBar]="headerSearchBar"
     [customButtons]="headerCustomButtons"
