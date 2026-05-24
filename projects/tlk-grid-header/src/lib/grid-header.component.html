@@ -12,19 +12,24 @@
       </tlk-slide-toggle>
       }
       @for (dd of getItemsByAlign(customDropdownFilter, 'left'); track dd.id) {
-      <select class="header-dropdown" [ngModel]="dropdownValues[dd.id]"
-        (ngModelChange)="dropdownValues[dd.id] = $event; onDropdownChange(dd)">
-        <option value="" disabled selected>{{ dd.field }}</option>
-        @for (opt of dd.options; track opt.value) {
-        <option [ngValue]="opt.value">{{ opt.label }}</option>
-        }
-      </select>
+      <tlk-select
+        [options]="dd.options ?? []"
+        [getOptionName]="getDropdownOptionLabel"
+        [label]="dd.field"
+        [autoClose]="true"
+        [(ngModel)]="dropdownValues[dd.id]"
+        (ngModelChange)="onDropdownChange(dd)">
+      </tlk-select>
       }
       @if (hasSearchBar('left') && searchBar) {
-      <input class="header-search" type="text" [placeholder]="searchBar.placeholder" (input)="onSearchInput($event)" />
+      <tlk-text-input
+        [placeholder]="searchBar.placeholder"
+        [(ngModel)]="searchInputValue"
+        (ngModelChange)="onSearchChange($event)">
+      </tlk-text-input>
       }
       @for (btn of getItemsByAlign(customButtons, 'left'); track btn.id) {
-      <button class="header-btn" (click)="onButtonClick(btn)">{{ btn.title }}</button>
+      <button tlkButton [variant]="'secondary'" [size]="'s'" (click)="onButtonClick(btn)">{{ btn.title }}</button>
       }
     </div>
 
@@ -36,19 +41,24 @@
       </tlk-slide-toggle>
       }
       @for (dd of getItemsByAlign(customDropdownFilter, 'center'); track dd.id) {
-      <select class="header-dropdown" [ngModel]="dropdownValues[dd.id]"
-        (ngModelChange)="dropdownValues[dd.id] = $event; onDropdownChange(dd)">
-        <option value="" disabled selected>{{ dd.field }}</option>
-        @for (opt of dd.options; track opt.value) {
-        <option [ngValue]="opt.value">{{ opt.label }}</option>
-        }
-      </select>
+      <tlk-select
+        [options]="dd.options ?? []"
+        [getOptionName]="getDropdownOptionLabel"
+        [label]="dd.field"
+        [autoClose]="true"
+        [(ngModel)]="dropdownValues[dd.id]"
+        (ngModelChange)="onDropdownChange(dd)">
+      </tlk-select>
       }
       @if (hasSearchBar('center') && searchBar) {
-      <input class="header-search" type="text" [placeholder]="searchBar.placeholder" (input)="onSearchInput($event)" />
+      <tlk-text-input
+        [placeholder]="searchBar.placeholder"
+        [(ngModel)]="searchInputValue"
+        (ngModelChange)="onSearchChange($event)">
+      </tlk-text-input>
       }
       @for (btn of getItemsByAlign(customButtons, 'center'); track btn.id) {
-      <button class="header-btn" (click)="onButtonClick(btn)">{{ btn.title }}</button>
+      <button tlkButton [variant]="'secondary'" [size]="'s'" (click)="onButtonClick(btn)">{{ btn.title }}</button>
       }
     </div>
 
@@ -60,16 +70,21 @@
       </tlk-slide-toggle>
       }
       @for (dd of getItemsByAlign(customDropdownFilter, 'right'); track dd.id) {
-      <select class="header-dropdown" [ngModel]="dropdownValues[dd.id]"
-        (ngModelChange)="dropdownValues[dd.id] = $event; onDropdownChange(dd)">
-        <option value="" disabled selected>{{ dd.field }}</option>
-        @for (opt of dd.options; track opt.value) {
-        <option [ngValue]="opt.value">{{ opt.label }}</option>
-        }
-      </select>
+      <tlk-select
+        [options]="dd.options ?? []"
+        [getOptionName]="getDropdownOptionLabel"
+        [label]="dd.field"
+        [autoClose]="true"
+        [(ngModel)]="dropdownValues[dd.id]"
+        (ngModelChange)="onDropdownChange(dd)">
+      </tlk-select>
       }
       @if (hasSearchBar('right') && searchBar) {
-      <input class="header-search" type="text" [placeholder]="searchBar.placeholder" (input)="onSearchInput($event)" />
+      <tlk-text-input
+        [placeholder]="searchBar.placeholder"
+        [(ngModel)]="searchInputValue"
+        (ngModelChange)="onSearchChange($event)">
+      </tlk-text-input>
       }
       @for (btn of getItemsByAlign(customButtons, 'right'); track btn.id) {
       <button tlkButton [variant]="'primary'" [size]="'s'" [disabled]="false">

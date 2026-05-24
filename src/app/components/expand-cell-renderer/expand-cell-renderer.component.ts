@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { TlkButtonComponent } from '@itero/ui-toolkit-angular/button';
+import { TlkButtonComponent } from '@itero/ui-components-angular/button';
 
 export interface RowAction {
   id: string;

@@ -1,5 +1,7 @@
 import { Component, inject, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
+import { TlkButtonComponent } from '@itero/ui-components-angular/button';
+import { TlkCheckboxComponent } from '@itero/ui-components-angular/checkbox';
 import { ColDef, Theme, IDatasource, IGetRowsParams, type RowSelectionOptions, type RowHeightParams } from 'ag-grid-community';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -41,7 +43,7 @@ export interface GridFeature {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [AgGridAngular, GridHeaderComponent],
+  imports: [AgGridAngular, GridHeaderComponent, TlkButtonComponent, TlkCheckboxComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

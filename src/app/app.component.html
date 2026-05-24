@@ -1,28 +1,27 @@
-<div class="app-container" [class.dark]="isDarkTheme">
+<div class="app-container" [class.dark]="isDarkTheme" [class.tlk-theme_dark]="isDarkTheme">
   <div class="control-header">
     <span class="control-header-label">Control Header</span>
     <div class="controls">
       <div class="features-dropdown">
-        <button class="control-btn" (click)="toggleFeaturesPanel()">
+        <button tlkButton [variant]="'secondary'" [size]="'s'" (click)="toggleFeaturesPanel()">
           Grid Features
           <span class="arrow" [class.open]="showFeaturesPanel"></span>
         </button>
         @if (showFeaturesPanel) {
           <div class="features-panel">
             @for (feature of gridFeatures; track feature.key) {
-              <label class="feature-item" (click)="$event.stopPropagation()">
-                <input
-                  type="checkbox"
+              <div class="feature-item" (click)="$event.stopPropagation()">
+                <tlk-checkbox
                   [checked]="feature.enabled"
-                  (change)="onFeatureToggle(feature)"
-                />
-                <span class="feature-label">{{ feature.label }}</span>
-              </label>
+                  (changeEvent)="onFeatureToggle(feature)">
+                  {{ feature.label }}
+                </tlk-checkbox>
+              </div>
             }
           </div>
         }
       </div>
-      <button class="control-btn" (click)="toggleTheme()">
+      <button tlkButton [variant]="'secondary'" [size]="'s'" (click)="toggleTheme()">
         {{ isDarkTheme ? 'Light Theme' : 'Dark Theme' }}
       </button>
     </div>

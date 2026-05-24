@@ -1,8 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TlkSlideToggleComponent } from '@itero/ui-toolkit-angular/slide-toggle';
-import { TlkButtonComponent } from '@itero/ui-toolkit-angular/button';
+import { TlkSlideToggleComponent } from '@itero/ui-components-angular/slide-toggle';
+import { TlkButtonComponent } from '@itero/ui-components-angular/button';
+import { TlkSelectComponent } from '@itero/ui-components-angular/select';
+import { TlkTextInputComponent } from '@itero/ui-components-angular/text-input';
 import {
   GridHeaderAlign,
   GridHeaderTheme,
@@ -17,7 +19,7 @@ import { GRID_HEADER_LIGHT_THEME } from './grid-header-themes';
 @Component({
   selector: 'tlk-grid-header',
   standalone: true,
-  imports: [NgStyle, FormsModule, TlkSlideToggleComponent, TlkButtonComponent],
+  imports: [NgStyle, FormsModule, TlkSlideToggleComponent, TlkButtonComponent, TlkSelectComponent, TlkTextInputComponent],
   templateUrl: './grid-header.component.html',
   styleUrl: './grid-header.component.scss',
 })
@@ -34,6 +36,10 @@ export class GridHeaderComponent {
 
   toggleStates: Record<string, boolean> = {};
   dropdownValues: Record<string, any> = {};
+  searchInputValue = '';
+
+  getDropdownOptionLabel = (opt: { label: string; value: any } | null | undefined): string =>
+    opt?.label ?? '';
 
   get themeVars(): Record<string, string> {
     const t = this.theme;
@@ -72,9 +78,8 @@ export class GridHeaderComponent {
     this.action.emit({ id: filter.id, type: 'toggle', value });
   }
 
-  onSearchInput(event: Event): void {
+  onSearchChange(value: string): void {
     if (!this.searchBar) return;
-    const value = (event.target as HTMLInputElement).value;
     this.searchBar.callback(this.searchBar.id, value);
     this.action.emit({ id: this.searchBar.id, type: 'search', value });
   }
@@ -85,7 +90,8 @@ export class GridHeaderComponent {
   }
 
   onDropdownChange(dropdown: CustomDropdownFilterConfig): void {
-    const value = this.dropdownValues[dropdown.id];
+    const selected = this.dropdownValues[dropdown.id];
+    const value = selected != null && typeof selected === 'object' ? selected.value : selected;
     dropdown.callback(dropdown.id, value);
     this.action.emit({ id: dropdown.id, type: 'dropdown', value });
   }

@@ -75,38 +75,6 @@
   }
 }
 
-.control-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fff;
-  color: rgb(46, 55, 66);
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: #e8e8e8;
-    border-color: #aaa;
-  }
-
-  .dark & {
-    background: #21222C;
-    color: #68FF8E;
-    border-color: #429356;
-    font-family: 'IBM Plex Mono', monospace;
-
-    &:hover {
-      background: #2a2b38;
-      border-color: #50F178;
-    }
-  }
-}
 
 .arrow {
   display: inline-block;
@@ -159,27 +127,6 @@
 
   .dark &:hover {
     background: #2a2b38;
-  }
-
-  input[type='checkbox'] {
-    width: 16px;
-    height: 16px;
-    accent-color: #4A90D9;
-    cursor: pointer;
-
-    .dark & {
-      accent-color: #00A2FF;
-    }
-  }
-}
-
-.feature-label {
-  font-size: 13px;
-  color: rgb(46, 55, 66);
-  user-select: none;
-
-  .dark & {
-    color: #68FF8E;
   }
 }
 
